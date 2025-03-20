@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imcs.home">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:supportsRtl="true"
+        android:hardwareAccelerated="true">
+
+        <activity
+            android:name=".presentation.feature.HomeActivity"
+            android:exported="true">
+        </activity>
+
+        <provider
+            android:name=".di.HomeInitialization"
+            android:authorities="${applicationId}.HomeInitialization"
+            android:exported="false"
+            android:enabled="true" />
+
+    </application>
+
+</manifest>

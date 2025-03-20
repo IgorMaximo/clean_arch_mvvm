@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.imcs.prospekt"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+   /* testOptions {
+        unitTests.includeAndroidResources  = true
+        unitTests.returnDefaultValues = true
+    }*/
+}
+
+dependencies {
+
+    implementation project(path: ':account')
+    implementation project(path: ':home')
+    implementation project(path: ':base')
+
+    implementation deps.core.multidex
+    implementation deps.core.ktx
+    implementation deps.core.appcompat
+    implementation deps.core.material
+    implementation deps.core.constraint_layout
+
+    implementation deps.koin.android
+    implementation deps.koin.viewmodel
+    implementation deps.koin.fragment
+    implementation deps.koin.workmanager
+    implementation deps.koin.ext
+    implementation deps.koin.ktor
+    implementation deps.koin.grandleplugin
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.converter_gson
+    implementation deps.retrofit.converter_moshi
+    implementation deps.retrofit.adapter_rxjava
+    implementation deps.retrofit.okhttp
+
+    testImplementation deps.mockk.mockk
+    testImplementation deps.mockk.agent
+
+    implementation deps.room.runtime
+//    kapt deps.room.kapt
+
+    implementation deps.google_gson.gson
+
+    implementation deps.rx.rx_java
+    implementation deps.rx.rx_android
+
+    testImplementation deps.unit.junit
+    androidTestImplementation deps.unit.ext
+    androidTestImplementation deps.unit.espresso
+
+//    implementation 'androidx.multidex:multidex:2.0.1'
+
+}
+apply from: "$rootDir/tools/versions.gradle"

@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion 31
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+
+    implementation deps.core.ktx
+    implementation deps.core.appcompat
+    implementation deps.core.material
+    implementation deps.core.constraint_layout
+
+    implementation deps.koin.android
+    implementation deps.koin.viewmodel
+    implementation deps.koin.fragment
+    implementation deps.koin.workmanager
+    implementation deps.koin.ext
+    implementation deps.koin.ktor
+    implementation deps.koin.grandleplugin
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.converter_gson
+    implementation deps.retrofit.converter_moshi
+    implementation deps.retrofit.adapter_rxjava
+    implementation deps.retrofit.okhttp
+
+    testImplementation deps.mockk.mockk
+    testImplementation deps.mockk.agent
+
+    implementation deps.room.runtime
+//    kapt deps.room.kapt
+
+    implementation deps.google_gson.gson
+
+    implementation deps.rx.rx_java
+    implementation deps.rx.rx_android
+
+    testImplementation deps.unit.junit
+    androidTestImplementation deps.unit.ext
+    androidTestImplementation deps.unit.espresso
+
+}
+apply from: "$rootDir/tools/versions.gradle"
